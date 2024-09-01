@@ -18,14 +18,10 @@ onMounted(() => {
   </div>
   <p>Pokoje:</p>
   <ul>
-    <li v-for="(i, n) in escapeRooms">
+    <li v-for="room in escapeRooms">
       <p>
         <span>
-          {{ n + 6 }}
-          {{ i.id }}
-        </span>
-        <span>
-          {{ i.name }}
+          {{ room.name }}
         </span>
       </p>
     </li>
