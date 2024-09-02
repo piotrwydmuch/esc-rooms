@@ -4,14 +4,40 @@ import Account from './components/Account.vue'
 import Auth from './components/Auth.vue'
 import NavBar from './components/NavBar.vue'
 import AllRooms from './views/AllRooms.vue'
+import VisitedRooms from './views/VisitedRooms.vue'
+import AddRoom from './views/AddRoom.vue'
+import UserProfile from './views/UserProfile.vue'
 import { supabase } from '../supabase'
 
 const session = ref()
 
-/* TO DO: https://vuejs.org/guide/scaling-up/routing#simple-routing-from-scratch */
-const changeView = (view) => {
-  console.log(view)
+const routes = {
+  '/': {
+    name: 'Wszystkie pokoje',
+    component: AllRooms
+  },
+  '/odwiedzone-pokoje': {
+    name: 'Odwiedzone',
+    component: VisitedRooms,
+  },
+  '/dodaj-pokoj': {
+    name: 'Dodaj pokój',
+    component: AddRoom,
+  },
+  '/profil': {
+    name: 'Twój profil',
+    component: UserProfile
+  },
 }
+
+const currentPath = ref(window.location.hash)
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'].component || NotFound
+})
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {
@@ -27,10 +53,9 @@ onMounted(() => {
 <template>
   <div class="container" style="padding: 50px 0 100px 0">
     <template v-if="session">
-      <NavBar @hashChange="changeView" />
-      <component :is="AllRooms" />
-      <!-- <AllRooms :session="session" />
-      <Account :session="session" /> -->
+      <NavBar :routes="routes" />
+      <component :is="currentView" />
+      <!-- <Account :session="session" /> -->
     </template>
     <Auth v-else />
   </div>

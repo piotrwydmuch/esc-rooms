@@ -1,10 +1,6 @@
 <script setup lang="ts">
 const emit = defineEmits(['hashChange'])
-
-window.addEventListener('hashchange', () => {
-  emit('hashChange', window.location.hash)
-})
-
+defineProps(['routes'])
 </script>
 
 <template>
@@ -12,10 +8,9 @@ window.addEventListener('hashchange', () => {
         <img src="#" alt="Logo" class="logo">
         <nav class="nav">
           <ol class="nav-links">
-            <li class="link"><a href="#/">Wszystkie pokoje</a></li>
-            <li class="link"><a href="#/odwiedzone-pokoje">Odwiedzone</a></li>
-            <li class="link"><a href="#/dodaj-pokoj">Dodaj pokój</a></li>
-            <li class="link"><a href="#/profil">Twoje konto</a></li>
+            <li v-for="(route, i) in routes" class="link">
+                <a :href="`#${i}`">{{ route.name }}</a>
+            </li>
           </ol>
         </nav>
         <button>Wyloguj</button>
