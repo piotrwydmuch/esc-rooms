@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue"
 import { getEscapeRooms } from "../services/escape-rooms";
 import SectionHeader from "../components/SectionHeader.vue";
+import Room from "../components/SingleRoomListElement.vue";
 
 const escapeRooms = ref();
 
@@ -20,13 +21,8 @@ onMounted(() => {
   />
   <div id="all-rooms" class="main">
     <ul class="rooms">
-      <li v-for="room in escapeRooms">
-        <p>
-          <span>
-            {{ room.name }}
-          </span>
-        </p>
-      </li>
+      <Room v-for="room in escapeRooms" :room="room">
+      </Room>
     </ul>
   </div>
 </template>
