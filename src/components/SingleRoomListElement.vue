@@ -2,12 +2,28 @@
 import { ref, defineProps, PropType } from 'vue'
 import { supabase } from '../../supabase'
 
-type Room = {
-    id: number,
-    name: string,
-    description: string,
-    image: string,
-    visited: boolean,
+interface Room {
+    id: number;
+    name: string;
+    description?: string;
+    location?: string;
+    difficulty_level?: number;
+    duration_minutes?: number;
+    max_players?: number;
+    average_rating?: number;
+    total_reviews?: number;
+    created_at?: string; // or Date
+    tags?: any[]; // or a more specific type if known
+    price?: number;
+    company_name?: string;
+    is_active?: boolean;
+    image_url?: string;
+    latitude?: number;
+    longitude?: number;
+    contact_phone?: string;
+    website_url?: string;
+    min_players?: number;
+    visited: boolean;
 }
 
 const props = defineProps({
@@ -21,7 +37,7 @@ const props = defineProps({
 
 <template>
     <div class="room">
-        <img class="room-img" :src="props.room.image" :alt="'Grafika pokoju o nazwie ' + props.room.name">
+        <img class="room-img" :src="props.room.image_url" :alt="'Grafika pokoju o nazwie ' + props.room.name">
         <div class="room-info">
             <h1>{{ props.room.name }}</h1>
             <p>{{ props.room.description }}</p>
