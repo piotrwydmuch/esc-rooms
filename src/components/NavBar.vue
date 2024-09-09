@@ -13,7 +13,7 @@ defineProps(['routes'])
             </li>
           </ol>
         </nav>
-        <button>Wyloguj</button>
+        <button class="link link-darker">Wyloguj</button>
     </header>
 </template>
 
@@ -42,4 +42,12 @@ header {
 .nav {
     margin-right: 24px;
 }
+
+.link {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
+  }
+
+  .link-darker {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md bg-gray-800 text-white;
+  }
 </style>

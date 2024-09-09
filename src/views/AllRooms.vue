@@ -33,11 +33,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.main {
-
-}
-
-.rooms {
-
-}
 </style>

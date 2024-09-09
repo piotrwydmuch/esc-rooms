@@ -37,50 +37,22 @@ const visited = ref(false);
 </script>
 
 <template>
-    <div class="room">
-        <img class="room-img" :src="props.room.image_url" :alt="'Grafika pokoju o nazwie ' + props.room.name">
-        <div class="room-info">
-            <h1>{{ props.room.name }}</h1>
-            <p>{{ props.room.description }}</p>
-            <label :for="`${visited}_${props.room.id}`">Odwiedzony</label>
-            <input :id="`${visited}_${props.room.id}`" type="checkbox" name="visited"
-                :checked="visited">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-8">
+        <div class="md:flex">
+            <div class="md:flex-shrink-0">
+                <img class="h-48 w-full object-cover md:h-full md:w-48 p-6" :src="props.room.image_url">
+            </div>
+            <div class="bg- pr-6">
+                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ props.room.name }}</a>
+                <p class="mt-2 text-gray-500">{{ props.room.description }}</p>
+                <label :for="`${visited}_${props.room.id}`">Odwiedzony</label>
+                <input :id="`${visited}_${props.room.id}`" type="checkbox" name="visited"
+                    :checked="visited">
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.room-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 20px;
-    border: 1px solid #000;
-}
 
-.room-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-}
-
-.room {
-    display: flex;
-    margin-bottom: 20px;
-    border: 1px solid #000;
-}
-
-.room h1 {
-    margin: 0;
-}
-
-.room p {
-    margin: 0;
-}
 </style>
