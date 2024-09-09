@@ -23,7 +23,6 @@ interface Room {
     contact_phone?: string;
     website_url?: string;
     min_players?: number;
-    visited: boolean;
 }
 
 const props = defineProps({
@@ -33,6 +32,8 @@ const props = defineProps({
     }
 })
 
+const visited = ref(false); 
+
 </script>
 
 <template>
@@ -41,9 +42,9 @@ const props = defineProps({
         <div class="room-info">
             <h1>{{ props.room.name }}</h1>
             <p>{{ props.room.description }}</p>
-            <label :for="`${props.room.visited}_${props.room.id}`">Odwiedzony</label>
-            <input :id="`${props.room.visited}_${props.room.id}`" type="checkbox" name="visited"
-                :checked="props.room.visited">
+            <label :for="`${visited}_${props.room.id}`">Odwiedzony</label>
+            <input :id="`${visited}_${props.room.id}`" type="checkbox" name="visited"
+                :checked="visited">
         </div>
     </div>
 </template>
