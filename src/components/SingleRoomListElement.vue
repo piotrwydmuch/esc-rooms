@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, defineProps, PropType } from 'vue'
-import { supabase } from '../../supabase'
 
 interface Room {
     id: number;

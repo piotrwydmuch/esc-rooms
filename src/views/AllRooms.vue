@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue"
 import { getEscapeRooms } from "../services/escape-rooms";
 import SectionHeader from "../components/SectionHeader.vue";
 import Room from "../components/SingleRoomListElement.vue";
-//@ts-ignore-next-line
 import orderBy from "lodash/orderBy";
 
 const escapeRooms = ref();
@@ -24,10 +23,10 @@ onMounted(() => {
     :title="'Wszystkie pokoje'"
     :subtitle="'Przeglądaj Escape Roomy. Oznacz pokoje, które odwiedziłeś.'"
   />
-  <div id="all-rooms" class="main">
-    <ul class="rooms">
-      <Room v-for="room in escapeRooms" :room="room">
-      </Room>
+  <div id="all-rooms" class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">All Escape Rooms</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-6">
+      <Room v-for="room in escapeRooms" :key="room.id" :room="room" class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105" />
     </ul>
   </div>
 </template>
