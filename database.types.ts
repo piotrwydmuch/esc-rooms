@@ -12,6 +12,31 @@ export type Json =
   | Json[]
 
 export type Database = {
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          operationName?: string
+          query?: string
+          variables?: Json
+          extensions?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       escape_rooms: {
@@ -83,59 +108,88 @@ export type Database = {
         }
         Relationships: []
       }
-      users: {
+      profiles: {
         Row: {
-          bio: string | null
-          created_at: string | null
-          email: string
+          avatar_url: string | null
           full_name: string | null
-          id: number
-          is_active: boolean | null
-          is_admin: boolean | null
-          last_login: string | null
-          password_hash: string
-          phone_number: string | null
-          profile_picture_url: string | null
+          id: string
           updated_at: string | null
-          username: string
+          username: string | null
           visited_rooms: number[] | null
-          website_url: string | null
+          website: string | null
         }
         Insert: {
-          bio?: string | null
-          created_at?: string | null
-          email: string
+          avatar_url?: string | null
           full_name?: string | null
-          id: number
-          is_active?: boolean | null
-          is_admin?: boolean | null
-          last_login?: string | null
-          password_hash: string
-          phone_number?: string | null
-          profile_picture_url?: string | null
+          id: string
           updated_at?: string | null
-          username: string
+          username?: string | null
           visited_rooms?: number[] | null
-          website_url?: string | null
+          website?: string | null
         }
         Update: {
-          bio?: string | null
-          created_at?: string | null
-          email?: string
+          avatar_url?: string | null
           full_name?: string | null
-          id?: number
-          is_active?: boolean | null
-          is_admin?: boolean | null
-          last_login?: string | null
-          password_hash?: string
-          phone_number?: string | null
-          profile_picture_url?: string | null
+          id?: string
           updated_at?: string | null
-          username?: string
+          username?: string | null
           visited_rooms?: number[] | null
-          website_url?: string | null
+          website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      visits: {
+        Row: {
+          created_at: string
+          escape_room_id: number | null
+          id: number
+          profile_id: string | null
+          rating: number | null
+          review: string | null
+          visited_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          escape_room_id?: number | null
+          id?: number
+          profile_id?: string | null
+          rating?: number | null
+          review?: string | null
+          visited_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          escape_room_id?: number | null
+          id?: number
+          profile_id?: string | null
+          rating?: number | null
+          review?: string | null
+          visited_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "visits_escape_room_id_fkey"
+            columns: ["escape_room_id"]
+            isOneToOne: false
+            referencedRelation: "escape_rooms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "visits_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
