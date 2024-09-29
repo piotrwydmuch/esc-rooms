@@ -36,7 +36,7 @@ const visited = ref(false);
 </script>
 
 <template>
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-8">
+    <div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden w-full my-8">
         <div class="md:flex">
             <div class="md:flex-shrink-0">
                 <img class="h-48 w-full object-cover md:h-full md:w-48 p-6" :src="props.room.image_url">
