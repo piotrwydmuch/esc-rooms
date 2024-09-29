@@ -1,10 +1,8 @@
-import { globals } from "../main.ts"
-export const singUp = async () => {
+import { supabase } from '../../supabase'
 
-    let { data } = await globals.supabase.auth.signUp({
-        email: 'someone@email.com',
-        password: 'MHABFRiKHWjoIGeNcTmI'
-    })
 
-    console.log(data);
-}
+export const getUserDetails = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    return user;
+} 
