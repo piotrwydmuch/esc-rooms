@@ -1,13 +1,13 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-import Account from './components/Account.vue'
-import Auth from './components/Auth.vue'
-import NavBar from './components/NavBar.vue'
-import AllRooms from './views/AllRooms.vue'
-import VisitedRooms from './views/VisitedRooms.vue'
-import AddRoom from './views/AddRoom.vue'
-import UserProfile from './views/UserProfile.vue'
-import { supabase } from '../supabase'
+import Account from '@/components/Account.vue'
+import Auth from '@/components/Auth.vue'
+import NavBar from '@/components/NavBar.vue'
+import AllRooms from '@/views/AllRooms.vue'
+import VisitedRooms from '@/views/VisitedRooms.vue'
+import AddRoom from '@/views/AddRoom.vue'
+import UserProfile from '@/views/UserProfile.vue'
+import { supabase } from '@/../supabase'
 
 const session = ref()
 
