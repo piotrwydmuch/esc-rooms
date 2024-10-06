@@ -1,12 +1,15 @@
 import { supabase } from '../../supabase.ts'
 
-export const handleLogin = async (email: string) => {
+export const handleLogin = async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
+      let { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
       })
-      if (error) throw error
-      alert('Check your email for the login link!')
+
+      if (error) console.log(error)
+      console.log(data);
+
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message)

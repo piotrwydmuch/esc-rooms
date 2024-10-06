@@ -5,11 +5,12 @@ import { supabase } from '../../supabase'
 
 const loading = ref(false)
 const email = ref('')
+const password = ref('')
 
 const logIn = async () => {
   try {
     loading.value = true
-    handleLogin(email.value);
+    handleLogin(email.value, password.value);
   } catch (error) {
   } finally {
     loading.value = false
@@ -29,6 +30,13 @@ const logIn = async () => {
         type="email" 
         placeholder="Your email" 
         v-model="email" 
+      />
+      <input 
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" 
+        required 
+        type="password" 
+        placeholder="Your passeword" 
+        v-model="password" 
       />
     </div>
     <div>
