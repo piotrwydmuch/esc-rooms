@@ -1,5 +1,15 @@
-# Vue 3 + TypeScript + Vite
+Full-stack web application that serves as a comprehensive ranking system and knowledge base for escape rooms. Aiming to learn and implement best practices in full-stack development, gain expertise with Vue.js and TypeScript, explore serverless architecture using Supabase, and create a useful tool for escape room enthusiasts.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Features
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+- User-generated rankings of escape rooms
+- Detailed information about various escape rooms
+- User authentication and profiles
+- Search and filter functionality
+- Responsive design for mobile and desktop
+
+Tech Stack
+
+- Frontend: Vue.js with TypeScript
+- Backend: Supabase (PostgreSQL database with real-time capabilities)
+- Authentication: Supabase Auth
